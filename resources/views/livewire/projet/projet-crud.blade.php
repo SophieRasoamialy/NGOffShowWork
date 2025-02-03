@@ -17,7 +17,7 @@
     </style>
     <div>
         <div class="row">
-            <div class=" col-md-4   my-2 float-left ">
+            <div class="  my-2 float-left ">
                 <button type="button"  class=" flex text-green-700 hover:text-white border-2 border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
                 wire:click = "redirectFormulaire" >Créer un nouveau projet </button>
             </div>

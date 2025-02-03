@@ -276,7 +276,7 @@
 						<div class="border-b-2 py-4">
 							<div class="flex flex-col md:flex-row md:items-center md:justify-between">
 								<div class="flex-1">
-									<div class="text-lg font-bold text-gray-700 leading-tight">Experience</div>
+									<div class="text-lg font-bold text-gray-700 leading-tight">Dernier Experience</div>
 								</div>
 							</div>
 						</div>

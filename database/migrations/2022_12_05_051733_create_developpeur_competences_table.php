@@ -14,7 +14,8 @@ class CreateDeveloppeurCompetencesTable extends Migration
     public function up()
     {
         Schema::create('developpeur_competences', function (Blueprint $table) {
-            $table->unsignedInteger('competence_id');
+            $table->id(); 
+            $table->unsignedBigInteger('competence_id');
             $table->foreign('competence_id')->references('competence_id')->on('competences')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

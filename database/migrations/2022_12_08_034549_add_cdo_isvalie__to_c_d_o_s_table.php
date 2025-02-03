@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCdoIsvalieToCDOSTable extends Migration
+class AddCdoIsvalieToCdoSTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddCdoIsvalieToCDOSTable extends Migration
     public function up()
     {
         Schema::table('c_d_o_s', function (Blueprint $table) {
-            $table->boolean('cdo_isvalide')->default(false);
+            if (!Schema::hasColumn('c_d_o_s', 'cdo_isvalide')) {
+                $table->boolean('cdo_isvalid')->default(false);
+            }
         });
     }
 
@@ -26,7 +28,9 @@ class AddCdoIsvalieToCDOSTable extends Migration
     public function down()
     {
         Schema::table('c_d_o_s', function (Blueprint $table) {
-            $table->dropColumn('cdo_isvalid');
+            if (Schema::hasColumn('c_d_o_s', 'cdo_isvalid')) {
+                $table->dropColumn('cdo_isvalid');
+            }
         });
     }
 }

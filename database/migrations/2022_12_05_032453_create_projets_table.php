@@ -14,8 +14,8 @@ class CreateProjetsTable extends Migration
     public function up()
     {
         Schema::create('projets', function (Blueprint $table) {
-            $table->increments('projet_id');
-            $table->unsignedInteger('categorie_id');
+            $table->unsignedBigInteger('projet_id')->autoIncrement();
+            $table->unsignedBigInteger('categorie_id');
             $table->string('projet_titre');
             $table->text('projet_description');
             $table->integer('projet_budget');

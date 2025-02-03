@@ -14,8 +14,9 @@ class CreateDateAbonnementsTable extends Migration
     public function up()
     {
         Schema::create('date_abonnements', function (Blueprint $table) {
+            $table->id(); 
             $table->unsignedBigInteger('user_id');
-            $table->unsignedInteger('abonnement_id');
+            $table->unsignedBigInteger('abonnement_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('abonnement_id')->references('abonnement_id')->on('abonnements')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

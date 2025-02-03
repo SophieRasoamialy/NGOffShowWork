@@ -14,7 +14,7 @@ class CreateCommissionsTable extends Migration
     public function up()
     {
         Schema::create('commissions', function (Blueprint $table) {
-            $table->increments('commission_id');
+            $table->unsignedBigInteger('commission_id')->autoIncrement();
             $table->string('commission_type');
             $table->float('commission_tarif');
             $table->timestamps();

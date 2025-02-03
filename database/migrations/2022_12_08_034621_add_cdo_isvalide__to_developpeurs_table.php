@@ -14,7 +14,9 @@ class AddCdoIsvalideToDeveloppeursTable extends Migration
     public function up()
     {
         Schema::table('developpeurs', function (Blueprint $table) {
-            $table->boolean('developpeurs_isvalide')->default(false);
+            if (!Schema::hasColumn('developpeurs', 'developpeurs_isvalid')) {
+                $table->boolean('developpeurs_isvalid')->default(false);
+            }
         });
     }
 
@@ -26,7 +28,9 @@ class AddCdoIsvalideToDeveloppeursTable extends Migration
     public function down()
     {
         Schema::table('developpeurs', function (Blueprint $table) {
-            $table->dropColumn('developpeurs_isvalid');
+            if (Schema::hasColumn('developpeurs', 'developpeurs_isvalide')) {
+                $table->dropColumn('developpeurs_isvalid');
+            }
         });
     }
 }

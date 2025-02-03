@@ -1,6 +1,6 @@
 <div class=" mt-5 mx-3 p-4 bg-gray-100 shadow-md">
 
-    <script src="https://cdn.tiny.cloud/1/pfj5wp555kxmoyt0yyzrbzpurbg1dhoal3nlf0itoy9at9k1/tinymce/6/tinymce.min.js" referrerpolicy="origin" ></script>
+<script src="https://cdn.tiny.cloud/1/thkq0kilt7as76artl9cvabsjp45x7he2kxdhevzxuid1f99/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
          
        
@@ -64,12 +64,12 @@
         </div>
         <div class="flex-1">
             <div class=" form-group mb-3">
-                <label class="text-blue-700 text-base" for="projet_duree">Duree du projet  @if(!is_null($categorieId) || $categorieId != "" || !is_null($projet_premium))<span class="text-sm text-gray-500">(doit être supérieur à {{$duree_min}})</span>@endif</label>
+                <label class="text-blue-700 text-base" for="projet_duree">Duree du projet en jours  @if(!is_null($categorieId) || $categorieId != "" || !is_null($projet_premium))<span class="text-sm text-gray-500">(doit être supérieur à {{$duree_min}})</span>@endif</label>
                 <input type="number" class=" bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " id  = "projet_duree" name = "projet_duree" wire:model.defer = "data.projet_duree"  >
                 @error('projet_duree') <span class="text-danger">{{$message}}</span>@enderror
             </div>
             <div class=" form-group mb-3">
-                <label class="text-blue-700 text-base" for="projet_budget">Budget pour le  projet @if(!is_null($categorieId) || $categorieId != "" || !is_null($projet_premium))<span class="text-sm text-gray-500"> (doit être supérieur à {{$budget_min}})@endif </label>
+                <label class="text-blue-700 text-base" for="projet_budget">Budget pour le  projet en Ariary @if(!is_null($categorieId) || $categorieId != "" || !is_null($projet_premium))<span class="text-sm text-gray-500"> (doit être supérieur à {{$budget_min}})@endif </label>
                 <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " id  = "projet_budget" name = "projet_budget" wire:model.defer = "data.projet_budget"  >
                 @error('projet_budget') <span class="text-danger">{{$message}}</span>@enderror
             </div>

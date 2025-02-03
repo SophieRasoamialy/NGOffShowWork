@@ -14,7 +14,8 @@ class CreateDepotsTable extends Migration
     public function up()
     {
         Schema::create('depots', function (Blueprint $table) {
-            $table->unsignedInteger('projet_id');
+            $table->id();
+            $table->unsignedBigInteger('projet_id');
             $table->unsignedBigInteger('user_id');
             $table->string('depot_lien_git');
             $table->boolean('gagnant')->default(false);

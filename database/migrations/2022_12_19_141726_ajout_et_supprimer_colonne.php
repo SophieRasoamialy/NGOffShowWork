@@ -15,7 +15,7 @@ class AjoutEtSupprimerColonne extends Migration
     {
         Schema::table('depots', function (Blueprint $table) {
             $table->dropColumn("gagnant");
-            $table->text("depot_remarque")->default("")->after("depot_lien_git");
+            $table->text("depot_remarque")->nullable()->after("depot_lien_git");  
             $table->integer("depot_note")->default(0)->after("depot_remarque");
             $table->boolean("depot_isaccepted")->default(false);
         });

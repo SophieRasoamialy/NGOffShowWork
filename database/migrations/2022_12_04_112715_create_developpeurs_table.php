@@ -16,6 +16,7 @@ class CreateDeveloppeursTable extends Migration
     public function up()
     {
         Schema::create('developpeurs', function (Blueprint $table) {
+            $table->id(); 
             $table->unsignedBigInteger('user_id');
             $table->string('developpeur_a_propos')->default("");
             $table->json('developpeur_competence')->default(new Expression('(JSON_ARRAY())'));

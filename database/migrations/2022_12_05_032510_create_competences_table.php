@@ -14,7 +14,7 @@ class CreateCompetencesTable extends Migration
     public function up()
     {
         Schema::create('competences', function (Blueprint $table) {
-            $table->increments('competence_id');
+            $table->unsignedBigInteger('competence_id')->autoIncrement();
             $table->string('competence_label');
             $table->timestamps();
         });

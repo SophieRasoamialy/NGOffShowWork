@@ -14,7 +14,7 @@ class CreateAbonnementsTable extends Migration
     public function up()
     {
         Schema::create('abonnements', function (Blueprint $table) {
-            $table->increments('abonnement_id');
+            $table->unsignedBigInteger('abonnement_id')->autoIncrement();
             $table->integer('abonnement_tarif');
             $table->string('abonnement_type');
             $table->timestamps();

@@ -9,7 +9,7 @@ class CDO extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id', 'cdo_premium','cdo_isvalid'
+        'user_id', 'cdo_premium','cdo_isvalide'
     ];
     public function user()
     {

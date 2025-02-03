@@ -14,6 +14,7 @@ class CreateCDOSTable extends Migration
     public function up()
     {
         Schema::create('c_d_o_s', function (Blueprint $table) {
+            $table->id(); 
             $table->unsignedBigInteger('user_id');
             $table->boolean('cdo_premium')->default(false);
             $table->timestamps();

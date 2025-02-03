@@ -14,9 +14,10 @@ class CreateCompetenceRequisesTable extends Migration
     public function up()
     {
         Schema::create('competence_requises', function (Blueprint $table) {
-            $table->unsignedInteger('competence_id');
+            $table->id(); 
+            $table->unsignedBigInteger('competence_id');
             $table->foreign('competence_id')->references('competence_id')->on('competences')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedInteger('categorie_id');
+            $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->references('categorie_id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

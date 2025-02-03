@@ -1,0 +1,10 @@
+{
+    "build": {
+      "builder": "NIXPACKS",
+      "cmd": "composer install --no-dev --optimize-autoloader && npm install && npm run production"
+    },
+    "start": {
+      "cmd": "php artisan serve --host 0.0.0.0 --port 8000"
+    }
+  }
+  

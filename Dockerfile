@@ -4,6 +4,9 @@ COPY . .
 ENV SKIP_COMPOSER 1
 ENV WEBROOT /var/www/html/public
 VOLUME /var/www/html/storage
+RUN chmod -R 775 /var/www/html/storage && \
+    chown -R www-data:www-data /var/www/html/storage
+
 ENV PHP_ERRORS_STDERR 1
 ENV RUN_SCRIPTS 1
 ENV REAL_IP_HEADER 1

@@ -9,12 +9,16 @@
         "beyondcode/laravel-websockets": "^1.13",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.75",
+        "laravel/framework": "8.83.28",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "livewire/livewire": "^2.10",
-        "stripe/stripe-php": "^10.1"
+        "league/commonmark": "2.6",
+        "livewire/livewire": "2.12.7",
+        "nesbot/carbon": "2.72.6",
+        "stripe/stripe-php": "^10.1",
+        "symfony/http-foundation": "5.4.46",
+        "symfony/process": "5.4.46"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

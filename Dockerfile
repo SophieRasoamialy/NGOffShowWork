@@ -37,12 +37,16 @@ RUN chmod +x /var/www/html/scripts/init.sh
 # Install dependencies and optimize Laravel
 RUN composer install --no-dev --optimize-autoloader
 
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R nginx:nginx /var/www/html/storage /var/www/html/bootstrap/cache
+    
+
 # Fix permissions
 RUN chmod -R 775 /var/www/html/storage && \
     chown -R nginx:nginx /var/www/html/storage && \
     chown -R nginx:nginx /var/www/html/bootstrap/cache
 
-    RUN chmod -R 755 /etc/nginx
+RUN chmod -R 755 /etc/nginx
 
 
 # Create symlink for php-fpm socket

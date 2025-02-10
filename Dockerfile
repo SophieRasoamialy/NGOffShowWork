@@ -4,6 +4,7 @@ COPY . .
 
 # Copy nginx.conf
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY www.conf /etc/php-fpm.d/www.conf
 
 # Image config
 ENV SKIP_COMPOSER 0

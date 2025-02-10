@@ -47,8 +47,8 @@ VOLUME /var/www/html/storage
 # Start script
 RUN echo '#!/bin/bash\n\
 /var/www/html/scripts/init.sh\n\
-/start.sh' > /custom-start.sh
+/start.sh' > /start.sh
 
-RUN chmod +x /custom-start.sh
+RUN chmod +x /start.sh
 
-CMD ["/custom-start.sh"]
+CMD ["/start.sh"]

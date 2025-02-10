@@ -45,5 +45,7 @@ RUN mkdir -p /var/run/php-fpm && \
 VOLUME /var/www/html/storage
 
 # Start script
-RUN chmod +x /start.sh
-CMD ["/start.sh"]
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+
+CMD ["start.sh"]

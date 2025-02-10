@@ -1,12 +1,7 @@
 #!/bin/bash
 
-# Wait for MySQL to be ready
-echo "Waiting for MySQL..."
-while ! nc -z $DB_HOST $DB_PORT; do
-  sleep 1
-done
-echo "MySQL is ready"
+# Start PHP-FPM
+php-fpm
 
-
-# Start the application
-/start.sh
+# Start Nginx
+nginx -g 'daemon off;'

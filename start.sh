@@ -7,8 +7,6 @@ while ! nc -z $DB_HOST $DB_PORT; do
 done
 echo "MySQL is ready"
 
-# Run migrations
-php artisan migrate --force
 
 # Start the application
 /start.sh

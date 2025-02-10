@@ -52,7 +52,10 @@ RUN mkdir -p /var/run/php-fpm && \
 VOLUME /var/www/html/storage
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 80 9000
+
+HEALTHCHECK CMD curl --fail http://localhost || exit 1
+
 
 # Start script
 COPY start.sh /usr/local/bin/start.sh

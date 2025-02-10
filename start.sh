@@ -1,10 +1,16 @@
 #!/bin/bash
 
+echo ".................................."
+
 # Start PHP-FPM
 php-fpm
 
+echo "php-fpm start......................."
+
 # Start Nginx
 nginx -g 'daemon off;'
+
+echo "nginx start......................."
 
 # Check Nginx status
 sleep 5

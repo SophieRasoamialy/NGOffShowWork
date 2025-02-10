@@ -47,6 +47,9 @@ RUN mkdir -p /var/run/php-fpm && \
 
 VOLUME /var/www/html/storage
 
+# Expose port 80
+EXPOSE 80
+
 # Start script
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh

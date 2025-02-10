@@ -2,6 +2,9 @@ FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
 
+# Copy nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # Image config
 ENV SKIP_COMPOSER 0
 ENV WEBROOT /var/www/html/public

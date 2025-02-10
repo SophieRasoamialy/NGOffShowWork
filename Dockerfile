@@ -45,10 +45,5 @@ RUN mkdir -p /var/run/php-fpm && \
 VOLUME /var/www/html/storage
 
 # Start script
-RUN echo '#!/bin/bash\n\
-/var/www/html/scripts/init.sh\n\
-/start.sh' > /start.sh
-
 RUN chmod +x /start.sh
-
 CMD ["/start.sh"]

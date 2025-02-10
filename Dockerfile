@@ -41,6 +41,9 @@ RUN chmod -R 775 /var/www/html/storage && \
     chown -R nginx:nginx /var/www/html/storage && \
     chown -R nginx:nginx /var/www/html/bootstrap/cache
 
+    RUN chmod -R 755 /etc/nginx
+
+
 # Create symlink for php-fpm socket
 RUN mkdir -p /var/run/php-fpm && \
     ln -s /var/run/php-fpm.sock /var/run/php-fpm/php-fpm.sock

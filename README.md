@@ -1,64 +1,152 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# NGOffShowWork
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+NGOffShowWork is a web platform for connecting clients, CDO partners, administrators, and developers around project work. The application lets administrators publish and manage projects, developers discover projects and submit work, and CDO users follow validation, participation, and project activity through dedicated dashboards.
 
-## About Laravel
+## What the platform does
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Project management**: create, list, validate, archive, and review projects.
+- **Developer workspace**: developer registration requests, profile management, project discovery, participation, and deliverable submission.
+- **CDO workspace**: CDO account requests, validation flows, dashboard access, project follow-up, and archives.
+- **Administration**: manage categories, skills, developers, CDO partners, participants, project submissions, commissions, and application settings.
+- **Submissions and results**: developers can submit Git links and administrators/CDO users can review, score, accept, and proclaim results.
+- **Notifications**: application notifications support project, user, participation, deletion, validation, and response events.
+- **Payments and subscriptions**: Stripe-powered payment flow and subscription records for premium developer/CDO/project features.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Main user roles
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Role | Purpose |
+| --- | --- |
+| Admin | Oversees the platform, validates users/projects, manages reference data, reviews submissions, and configures settings. |
+| Developer | Builds a profile, discovers projects, participates, submits deliverables, and tracks results. |
+| CDO | Uses a partner dashboard to manage or follow projects, developers, participations, archives, and validations. |
+| Guest/client | Can access the public landing page and register/login to start using the platform. |
 
-## Learning Laravel
+## Tech stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Backend**: PHP 7.3+/8.x with Laravel 8
+- **Frontend**: Blade templates, Laravel Livewire 2, Bootstrap, Tailwind CSS, Flowbite, and Laravel Mix
+- **Database**: MySQL-compatible database
+- **Authentication**: Laravel UI authentication with email verification
+- **Payments**: Stripe PHP SDK
+- **Realtime/websocket support**: BeyondCode Laravel WebSockets
+- **Deployment**: Docker image based on Nginx + PHP-FPM
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Project structure
 
-## Laravel Sponsors
+```text
+app/Http/Livewire/      Livewire components for dashboards, projects, users, payments, submissions, and settings
+app/Models/             Eloquent models for users, developers, CDOs, projects, participations, submissions, subscriptions, and reference data
+app/Notifications/      Notification classes used by the platform workflows
+database/migrations/    Database schema for the application domain
+resources/views/        Blade and Livewire views for public pages and role-specific dashboards
+routes/web.php          Web routes grouped by role middleware
+public/                 Public assets and compiled frontend files
+Dockerfile              Production container definition
+start.sh                Container startup script for PHP-FPM, storage link, permissions, and Nginx
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Requirements
 
-### Premium Partners
+- PHP compatible with the Laravel version used by this project (`^7.3` or `^8.0`)
+- Composer
+- Node.js and npm
+- MySQL or a compatible database
+- Stripe credentials if payment features are enabled
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Local setup
 
-## Contributing
+1. **Install PHP dependencies**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   ```bash
+   composer install
+   ```
 
-## Code of Conduct
+2. **Install frontend dependencies**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+   ```bash
+   npm install
+   ```
 
-## Security Vulnerabilities
+3. **Create the environment file**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Configure the environment**
+
+   Update `.env` with your local database, mail, queue, websocket, and payment settings. At minimum, confirm these values:
+
+   ```env
+   APP_NAME=NGOffShowWork
+   APP_URL=http://localhost:8000
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=ngoffshowwork
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
+
+5. **Run database migrations and seed the default administrator**
+
+   ```bash
+   php artisan migrate --seed
+   ```
+
+6. **Link storage for uploaded/public files**
+
+   ```bash
+   php artisan storage:link
+   ```
+
+7. **Build frontend assets**
+
+   ```bash
+   npm run dev
+   ```
+
+8. **Start the development server**
+
+   ```bash
+   php artisan serve
+   ```
+
+   The application will be available at `http://localhost:8000` unless you use a different host or port.
+
+## Common commands
+
+```bash
+# Run the PHP test suite
+php artisan test
+
+# Watch frontend assets during development
+npm run watch
+
+# Build production frontend assets
+npm run prod
+
+# Clear cached Laravel configuration/views/routes
+php artisan optimize:clear
+
+# List registered routes
+php artisan route:list
+```
+
+## Docker deployment
+
+The repository includes a `Dockerfile` and `start.sh` for an Nginx/PHP-FPM deployment. The container startup script starts PHP-FPM, creates the public storage symlink when needed, fixes storage/cache permissions, and runs Nginx in the foreground.
+
+When deploying with Docker, provide production-ready environment variables for the application key, database, mail, queue, websocket, and payment integrations. The Docker image exposes ports `80` and `9000`.
+
+## Notes for maintainers
+
+- Keep secrets, payment keys, database passwords, and API tokens out of source control; use environment variables instead.
+- Review seeded credentials before using this project in a shared or production environment.
+- Payment code should use environment-based Stripe keys before production use.
+- Several workflows are role-protected, so test changes with admin, developer, and CDO accounts when possible.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+No project-specific license file is currently included in this repository. Add a license before distributing or open-sourcing the application.

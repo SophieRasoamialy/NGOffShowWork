@@ -1,82 +1,82 @@
 # NGOffShowWork
 
-NGOffShowWork is a web platform for connecting clients, CDO partners, administrators, and developers around project work. The application lets administrators publish and manage projects, developers discover projects and submit work, and CDO users follow validation, participation, and project activity through dedicated dashboards.
+NGOffShowWork est une plateforme web qui met en relation les clients, les partenaires CDO, les administrateurs et les développeurs autour de travaux de projet. L’application permet aux administrateurs de publier et de gérer des projets, aux développeurs de découvrir des projets et de soumettre leur travail, et aux utilisateurs CDO de suivre la validation, la participation et l’activité des projets grâce à des tableaux de bord dédiés.
 
-## What the platform does
+## Ce que fait la plateforme
 
-- **Project management**: create, list, validate, archive, and review projects.
-- **Developer workspace**: developer registration requests, profile management, project discovery, participation, and deliverable submission.
-- **CDO workspace**: CDO account requests, validation flows, dashboard access, project follow-up, and archives.
-- **Administration**: manage categories, skills, developers, CDO partners, participants, project submissions, commissions, and application settings.
-- **Submissions and results**: developers can submit Git links and administrators/CDO users can review, score, accept, and proclaim results.
-- **Notifications**: application notifications support project, user, participation, deletion, validation, and response events.
-- **Payments and subscriptions**: Stripe-powered payment flow and subscription records for premium developer/CDO/project features.
+- **Gestion de projets** : créer, lister, valider, archiver et examiner des projets.
+- **Espace développeur** : demandes d’inscription des développeurs, gestion de profil, découverte de projets, participation et soumission de livrables.
+- **Espace CDO** : demandes de comptes CDO, flux de validation, accès au tableau de bord, suivi des projets et archives.
+- **Administration** : gérer les catégories, compétences, développeurs, partenaires CDO, participants, soumissions de projets, commissions et paramètres de l’application.
+- **Soumissions et résultats** : les développeurs peuvent soumettre des liens Git, et les administrateurs/utilisateurs CDO peuvent examiner, noter, accepter et proclamer les résultats.
+- **Notifications** : les notifications de l’application prennent en charge les événements liés aux projets, aux utilisateurs, aux participations, aux suppressions, aux validations et aux réponses.
+- **Paiements et abonnements** : flux de paiement basé sur Stripe et enregistrements d’abonnements pour les fonctionnalités premium destinées aux développeurs, aux CDO et aux projets.
 
-## Main user roles
+## Principaux rôles utilisateurs
 
-| Role | Purpose |
+| Rôle | Objectif |
 | --- | --- |
-| Admin | Oversees the platform, validates users/projects, manages reference data, reviews submissions, and configures settings. |
-| Developer | Builds a profile, discovers projects, participates, submits deliverables, and tracks results. |
-| CDO | Uses a partner dashboard to manage or follow projects, developers, participations, archives, and validations. |
-| Guest/client | Can access the public landing page and register/login to start using the platform. |
+| Administrateur | Supervise la plateforme, valide les utilisateurs/projets, gère les données de référence, examine les soumissions et configure les paramètres. |
+| Développeur | Crée un profil, découvre des projets, participe, soumet des livrables et suit les résultats. |
+| CDO | Utilise un tableau de bord partenaire pour gérer ou suivre les projets, développeurs, participations, archives et validations. |
+| Invité/client | Peut accéder à la page d’accueil publique et s’inscrire/se connecter pour commencer à utiliser la plateforme. |
 
-## Tech stack
+## Stack technique
 
-- **Backend**: PHP 7.3+/8.x with Laravel 8
-- **Frontend**: Blade templates, Laravel Livewire 2, Bootstrap, Tailwind CSS, Flowbite, and Laravel Mix
-- **Database**: MySQL-compatible database
-- **Authentication**: Laravel UI authentication with email verification
-- **Payments**: Stripe PHP SDK
-- **Realtime/websocket support**: BeyondCode Laravel WebSockets
-- **Deployment**: Docker image based on Nginx + PHP-FPM
+- **Backend** : PHP 7.3+/8.x avec Laravel 8
+- **Frontend** : templates Blade, Laravel Livewire 2, Bootstrap, Tailwind CSS, Flowbite et Laravel Mix
+- **Base de données** : base de données compatible MySQL
+- **Authentification** : authentification Laravel UI avec vérification de l’e-mail
+- **Paiements** : SDK Stripe PHP
+- **Support temps réel/websocket** : BeyondCode Laravel WebSockets
+- **Déploiement** : image Docker basée sur Nginx + PHP-FPM
 
-## Project structure
+## Structure du projet
 
 ```text
-app/Http/Livewire/      Livewire components for dashboards, projects, users, payments, submissions, and settings
-app/Models/             Eloquent models for users, developers, CDOs, projects, participations, submissions, subscriptions, and reference data
-app/Notifications/      Notification classes used by the platform workflows
-database/migrations/    Database schema for the application domain
-resources/views/        Blade and Livewire views for public pages and role-specific dashboards
-routes/web.php          Web routes grouped by role middleware
-public/                 Public assets and compiled frontend files
-Dockerfile              Production container definition
-start.sh                Container startup script for PHP-FPM, storage link, permissions, and Nginx
+app/Http/Livewire/      Composants Livewire pour les tableaux de bord, projets, utilisateurs, paiements, soumissions et paramètres
+app/Models/             Modèles Eloquent pour les utilisateurs, développeurs, CDO, projets, participations, soumissions, abonnements et données de référence
+app/Notifications/      Classes de notification utilisées par les flux de travail de la plateforme
+database/migrations/    Schéma de base de données du domaine applicatif
+resources/views/        Vues Blade et Livewire pour les pages publiques et les tableaux de bord propres à chaque rôle
+routes/web.php          Routes web regroupées par middleware de rôle
+public/                 Ressources publiques et fichiers frontend compilés
+Dockerfile              Définition du conteneur de production
+start.sh                Script de démarrage du conteneur pour PHP-FPM, le lien de stockage, les permissions et Nginx
 ```
 
-## Requirements
+## Prérequis
 
-- PHP compatible with the Laravel version used by this project (`^7.3` or `^8.0`)
+- PHP compatible avec la version de Laravel utilisée par ce projet (`^7.3` ou `^8.0`)
 - Composer
-- Node.js and npm
-- MySQL or a compatible database
-- Stripe credentials if payment features are enabled
+- Node.js et npm
+- MySQL ou une base de données compatible
+- Identifiants Stripe si les fonctionnalités de paiement sont activées
 
-## Local setup
+## Installation locale
 
-1. **Install PHP dependencies**
+1. **Installer les dépendances PHP**
 
    ```bash
    composer install
    ```
 
-2. **Install frontend dependencies**
+2. **Installer les dépendances frontend**
 
    ```bash
    npm install
    ```
 
-3. **Create the environment file**
+3. **Créer le fichier d’environnement**
 
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
 
-4. **Configure the environment**
+4. **Configurer l’environnement**
 
-   Update `.env` with your local database, mail, queue, websocket, and payment settings. At minimum, confirm these values:
+   Mettez à jour `.env` avec vos paramètres locaux de base de données, mail, file d’attente, websocket et paiement. Au minimum, vérifiez ces valeurs :
 
    ```env
    APP_NAME=NGOffShowWork
@@ -89,64 +89,64 @@ start.sh                Container startup script for PHP-FPM, storage link, perm
    DB_PASSWORD=
    ```
 
-5. **Run database migrations and seed the default administrator**
+5. **Exécuter les migrations de base de données et créer l’administrateur par défaut**
 
    ```bash
    php artisan migrate --seed
    ```
 
-6. **Link storage for uploaded/public files**
+6. **Créer le lien de stockage pour les fichiers téléversés/publics**
 
    ```bash
    php artisan storage:link
    ```
 
-7. **Build frontend assets**
+7. **Compiler les ressources frontend**
 
    ```bash
    npm run dev
    ```
 
-8. **Start the development server**
+8. **Démarrer le serveur de développement**
 
    ```bash
    php artisan serve
    ```
 
-   The application will be available at `http://localhost:8000` unless you use a different host or port.
+   L’application sera disponible à l’adresse `http://localhost:8000`, sauf si vous utilisez un autre hôte ou port.
 
-## Common commands
+## Commandes courantes
 
 ```bash
-# Run the PHP test suite
+# Exécuter la suite de tests PHP
 php artisan test
 
-# Watch frontend assets during development
+# Surveiller les ressources frontend pendant le développement
 npm run watch
 
-# Build production frontend assets
+# Compiler les ressources frontend de production
 npm run prod
 
-# Clear cached Laravel configuration/views/routes
+# Vider le cache de configuration/vues/routes de Laravel
 php artisan optimize:clear
 
-# List registered routes
+# Lister les routes enregistrées
 php artisan route:list
 ```
 
-## Docker deployment
+## Déploiement Docker
 
-The repository includes a `Dockerfile` and `start.sh` for an Nginx/PHP-FPM deployment. The container startup script starts PHP-FPM, creates the public storage symlink when needed, fixes storage/cache permissions, and runs Nginx in the foreground.
+Le dépôt inclut un `Dockerfile` et `start.sh` pour un déploiement Nginx/PHP-FPM. Le script de démarrage du conteneur lance PHP-FPM, crée le lien symbolique de stockage public si nécessaire, corrige les permissions de stockage/cache et exécute Nginx au premier plan.
 
-When deploying with Docker, provide production-ready environment variables for the application key, database, mail, queue, websocket, and payment integrations. The Docker image exposes ports `80` and `9000`.
+Lors d’un déploiement avec Docker, fournissez des variables d’environnement prêtes pour la production pour la clé de l’application, la base de données, le mail, la file d’attente, les websockets et les intégrations de paiement. L’image Docker expose les ports `80` et `9000`.
 
-## Notes for maintainers
+## Notes pour les mainteneurs
 
-- Keep secrets, payment keys, database passwords, and API tokens out of source control; use environment variables instead.
-- Review seeded credentials before using this project in a shared or production environment.
-- Payment code should use environment-based Stripe keys before production use.
-- Several workflows are role-protected, so test changes with admin, developer, and CDO accounts when possible.
+- Ne stockez pas les secrets, clés de paiement, mots de passe de base de données et jetons d’API dans le contrôle de source ; utilisez plutôt des variables d’environnement.
+- Vérifiez les identifiants créés par les seeders avant d’utiliser ce projet dans un environnement partagé ou de production.
+- Le code de paiement doit utiliser des clés Stripe basées sur l’environnement avant une utilisation en production.
+- Plusieurs flux de travail sont protégés par rôle ; testez donc les changements avec des comptes administrateur, développeur et CDO lorsque c’est possible.
 
-## License
+## Licence
 
-No project-specific license file is currently included in this repository. Add a license before distributing or open-sourcing the application.
+Aucun fichier de licence propre au projet n’est actuellement inclus dans ce dépôt. Ajoutez une licence avant de distribuer ou de publier l’application en open source.
